@@ -1,16 +1,3 @@
-import express from "express";
-import { prisma } from "./prisma";
+import { PrismaClient } from "@prisma/client";
 
-const app = express();
-
-app.use(express.json());
-
-app.get("/", async (req, res) => {
-    const autores = await prisma.autor.findMany();
-
-    res.json(autores);
-});
-
-app.listen(3000, () => {
-    console.log("Servidor rodando");
-});
+export const prisma = new PrismaClient();
