@@ -50,7 +50,8 @@ router.get("/", async (req: Request, res: Response) => {
 
     const jogos = await prisma.jogo.findMany({
         include: {
-            genero: true
+            genero: true,
+            plataformas: true
         }
     });
 

@@ -5,32 +5,32 @@
 
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
   provider = "prisma-client-js"
 }
 
-model genero {
-  id Int @id @default(autoincrement())
+model Genero {
+  id   Int    @id @default(autoincrement())
   nome String
-
-  jogos jogo[]
+  jogos Jogo[]
 }
 
-model jogo {
-  id Int @id @default(autoincrement())
+model Jogo {
+  id    Int    @id @default(autoincrement())
   titulo String
 
   generoId Int
-  genero Genero @relation(fields: [generoId], references: [id])
+  genero   Genero @relation(fields: [generoId], references: [id])
 
-  plataformas plataforma[]
+  plataformas Plataforma[]
 }
 
-model plataforma {
-  id Int @id @default(autoincrement())
+model Plataforma {
+  id   Int    @id @default(autoincrement())
   nome String
 
-  jogos jogo[]
+  jogos Jogo[]
 }
